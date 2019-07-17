@@ -1,0 +1,157 @@
+body {
+   background-color: #ff80ab ;
+}
+/* btn */
+.btn-wrap {
+   /*display: flex;
+   justify-content: center;
+   align-items: center;*/
+   width: 762px;
+   height: 100vh;
+   overflow: hidden;
+   margin: 0 auto;
+   padding-top: 100px;
+}
+.btn-wrap .btn {
+    width: 234px; height: 234px;
+    float: left;
+    background: #ccc;
+}
+.btn-wrap .btn.mr {
+    margin: 0 30px 30px 0;
+}
+.btn-wrap .btn img {
+  width: 100%; height: 100%;
+}
+
+/************************* modal-cont *****************************/
+
+/* modal */
+#modal {
+  display: none;
+  position: fixed; left: 0; top: 0;
+  width: 100%; height: 100%;
+}
+#modal .modal-bg {
+   background-color: rgba(0,0,0,0.7);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+}
+#modal .modal-bg .modal-cont {
+   position: relative;
+   width: 70%;
+   height: 70%;
+   display: inline-block;
+  overflow: hidden;
+}
+.modal-cont .img-box {
+    position: relative;
+    width: 60%; height: 100%;
+    float: left;
+    background: #000;
+}
+.modal-cont .img-box img {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 100%;
+}
+.modal-cont .cont {
+  width: 40%; height: 100%;
+  float: left;
+  background: #fff;
+  text-align: center;
+}
+.modal-cont .cont .name {
+    width: 100%; 
+    overflow: hidden;
+    display: inline;
+}
+.modal-cont .cont .name .name-box {
+    margin: 20px;
+    overflow: hidden;
+    background: #fff;
+}
+.modal-cont .cont .name .pic {
+    width: 40px; height: 40px;
+    border-radius: 50%; 
+    border: 1px solid #333;
+    float: left;
+}
+.modal-cont .cont .name .user {
+    padding-left: 20px;
+    float: left;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 40px;
+    font-size: 14px; font-weight: 500;
+}
+.modal-cont .cont .text {
+    width: 100%; height: 75%;
+    background: #bbb;
+    overflow: hidden;
+}
+.modal-cont .cont .text .text-box {
+    width: 100%; height: 100%;
+}
+.modal-cont .cont .text .text-box .content {
+    width: 100%; height: 80px;
+    background: #777;
+    line-height: 80px;
+    font-size: 14px;
+}
+.modal-cont .cont .text .text-box .reply {
+    height: 80px;
+    overflow: hidden;
+    font-size: 14px;
+    background: #eee;
+}
+.modal-cont .cont .text .text-box .reply .userID {
+    line-height: 80px;
+    margin-left: 30px;
+    float: left;
+}
+.modal-cont .cont .text .text-box .reply .replytext {
+    margin-left: 20px;
+    line-height: 80px;
+    float: left;
+}
+.modal-cont .cont .sum {
+    width: 100%; height: 13%;
+    background: #eee;
+}
+.modal-cont .cont .sum form {
+    width: 100%; height: 100%;
+    overflow: hidden;
+}
+.modal-cont .cont .sum input {
+    width: 80%; height: 100%;
+    border: 0;
+    background: #ff0000;
+    float: left;
+    padding: 0;
+}
+.modal-cont .cont .sum button {
+    width: 20%; height: 100%;
+    border: 0;
+    background: #214f8c;
+    float: left;
+}
+#modal .modal-bg .modal-cont h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+#modal .modal-bg .modal-cont p {
+  font-size: 18px;
+  line-height: 1.3;
+}
+#modal .modal-bg .modal-cont .close {
+  position: absolute; top: 5px; right: 5px;
+  background: transparent; padding: 10px;
+  border-radius: 50%;
+}
+#modal .modal-bg .modal-cont .close svg {
+  width: 24px; fill: #ccc; vertical-align: top;
+}

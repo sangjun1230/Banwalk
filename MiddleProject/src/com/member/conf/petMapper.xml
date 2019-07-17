@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="petMapper">
+	
+
+<!-- 전체 select -->
+	<select  id="PetList">
+	select * from member m, pet p where m.id=p.id(+) and m.id=#{id}
+	</select>
+	
+	<!-- 해당 아이디 select -->
+	<select id="PetView" resultType="com.pet.vo.PetVo">
+	<!-- select p.p_name, p.p_sex, p.p_size, p.p_birthdate from member m, pet p where m.id=p.id(+) and m.id=#{id} -->
+	select p.p_name, p.p_sex, p.p_size, p.p_birthdate from member m right outer join pet p on m.id=p.id where m.id=#{id};
+	</select>
+	
+	
+	<insert id="PetInsert">
+	 <!-- insert into p_name, p_sex, p_size, p_birthdate values ((select id from member where id=#{id}),#{p_name},#{p_sex},#{p_size},#{p_birthdate}) -->
+	 <!--  insert into pet values ((select id from member where id=#{id}),p_name=#{p_name}, p_sex=#{p_sex}, p_size=#{p_size}, p_birthdate=#{p_birthdate}) -->
+	 insert into pet (id, p_name, p_sex, p_size, p_birthdate)
+	 values (#{id}, #{p_name}, #{p_sex}, #{p_size}, #{p_birthdate})
+	</insert>
+
+	<delete id="PetDelete" parameterType="com.pet.vo.PetVo">
+	delete from pet where id = #{id} and p_name=#{p_name}  
+	
+	</delete>
+
+	<update id="PetUpdate" parameterType="com.pet.vo.PetVo">
+	<!-- update pet set id =#{id}, p_name =#{p_name}, p_sex=#{p_sex}, p_size=#{p_size}, p_birthdate=#{p_birthdate} where id=#{id} -->
+	update pet set p_sex=#{p_sex}, p_size=#{p_size}, p_birthdate=#{p_birthdate} where id=#{id} and p_name=#{p_name}
+	</update>
+	
+	<select id="PetFind" resultType="com.pet.vo.PetVo">
+		select * from pet where id=#{id} and p_name=#{p_name}
+	</select>
+
+</mapper>

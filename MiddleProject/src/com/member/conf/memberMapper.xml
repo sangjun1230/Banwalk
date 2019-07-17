@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--no number(4), id varchar2(20) primary key, pw varchar2(20) NOT NULL, 
+	n_id varchar2(20) NOT NULL UNIQUE, tel varchar2(20) NOT NULL, sido varchar2(20) 
+	NOT NULL, gu varchar2(20) NOT NULL, doro varchar2(20) NOT NULL, d_juso varchar2(50), 
+	postnum varchar2(20) NOT NULL, email varchar2(20) NOT NULL UNIQUE, u_sex 
+	char(1) NOT NULL, u_birthday date NOT NULL, u_name varchar2(20) NOT NULL, 
+	u_enrollday date NOT NULL, status char(1) NOT NULL, manage char(1) NOT NULL, 
+	petnum number NOT NULL, friend char(1), f_id varchar2(20) -->
+
+<mapper namespace="memberMapper">
+	<select id="view" resultType="com.member.vo.MemberVo">
+		select * from member
+	</select>
+
+	<select id="memberFind" resultType="com.member.vo.MemberVo">
+		select * from member where id = #{id}
+	</select>
+	
+	<select id="memberLogin" resultType="com.member.vo.MemberVo" >
+		select * from member where id = #{id} and pw = ${pw}
+	</select>
+
+	<insert id="memberInsert">
+		insert into member
+		(id, pw, u_name, n_id, u_birthday, u_sex, zonecode, sido, sigungu, roadname,d_juso, email, tel, petcount)
+		values
+		(#{id}, #{pw}, #{u_name}, #{n_id}, #{u_birthday}, #{u_sex}, #{zonecode}, #{sido}, #{sigungu},#{roadname},#{d_juso}, #{email}, #{tel}, #{petcount})
+	</insert>
+
+	<delete id="memberDelete">
+		delete from member where id = #{id}
+	</delete>
+
+	<update id="memberUpdate" parameterType="com.member.vo.MemberVo">
+	update member set pw = #{pw}, u_name = #{u_name}, n_id = #{n_id}, u_birthday = #{u_birthday}, u_sex = #{u_sex}, zonecode = #{zonecode}, sido = #{sido}, sigungu = #{sigungu}, roadname = #{roadname}, d_juso = #{d_juso}, email = #{email},
+	tel = #{tel}, petcount = #{petcount} where id = #{id}
+	</update>
+	
+	<select id="memberPwcheck" resultType="com.member.vo.MemberVo">
+		select pw, n_id from member where id = #{id} and email = #{email}
+	</select>
+	
+	<select id="memberIdcheck" resultType="com.member.vo.MemberVo">
+		select id, n_id from member where u_name = #{u_name} and email = #{email}
+	</select>
+	
+	
+
+</mapper>
